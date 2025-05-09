@@ -59,6 +59,7 @@ const Sidebar = () => {
       subItems: [
         { name: "All Users", path: "/users/all" },
         { name: "Add New User", path: "/users/add" },
+        { name: "Profile", path: "/profile" },
       ],
     },
     {
@@ -102,7 +103,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="w-[259px] bg-white border-r border-gray-200 flex flex-col">
+    <div className="w-[230px] bg-white border-r h-full overflow-y-auto border-gray-200 flex flex-col">
       {/* Logo Section */}
       <div className="p-5 border-b pb-8 border-gray-200">
         <div className="h-8">
@@ -146,6 +147,7 @@ const Sidebar = () => {
 
                 {item.hasDropdown && isDropdownOpen && (
                   <div className="ml-6 mt-1 space-y-1">
+                    <nav className="space-y-1">
                     {item.subItems.map((subItem) => (
                       <Link
                         key={subItem.name}
@@ -158,7 +160,8 @@ const Sidebar = () => {
                       >
                         {subItem.name}
                       </Link>
-                    ))}
+                    ))} 
+                    </nav>
                   </div>
                 )}
               </div>
@@ -168,11 +171,10 @@ const Sidebar = () => {
       </div>
 
       {/* Logout Button */}
-      <div className="p-4 border-t border-gray-200">
-        <Link
-          to="/logout"
-          className="flex items-center gap-3 text-gray-700 hover:text-gray-900"
-        >
+      <div
+        className="absolute bottom-0 w-[230px] border-t border-gray-200 p-4 left-4 flex items-center gap-3 text-gray-700 hover:text-gray-900"
+>
+        <Link to="/logout" className="flex items-center gap-3">
           <LogOut className="w-5 h-5" />
           <span className="text-sm font-medium">Logout</span>
         </Link>
